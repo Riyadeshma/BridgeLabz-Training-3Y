@@ -1,0 +1,97 @@
+  * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  padding: 2em;
+}
+
+.page-title {
+  text-align: center;
+  color: #1f2937;
+}
+
+.pricing {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.plan {
+  background-color: #ffffff;
+  flex: 1 1 250px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 1.5em;
+  border: 2px solid #d0d7e2;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.plan:hover {
+  transform: scale(1.05);
+  background-color: #eef4ff;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.plan ul li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 1em 0;
+}
+
+.price span {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #777;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7em 1.2em;
+  background-color: #1f2937;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+.btn:hover {
+  background-color: #374151;
+}
+
+.plan.popular {
+  border: 3px solid #d9a441;
+  position: relative;
+}
+
+.plan.popular::before {
+  content: "Most Popular";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d9a441;
+  color: #fff;
+  padding: 0.2em 0.8em;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
