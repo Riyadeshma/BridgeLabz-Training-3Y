@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+<link rel="stylesheet" href="q7.css">
+<style>
+  * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+  color: #333;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.contact-form {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5em;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin: 0 0 1em;
+  color: #1f2937;
+}
+
+.contact-form label {
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  color: #444;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.7em;
+  margin-bottom: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4a6fdc;
+}
+
+.contact-form button {
+  padding: 0.8em;
+  background-color: #4a6fdc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #3a5bc0;
+}
+</style>
+</head>
+<body>
+  <main class="page-center">
+    <form class="contact-form" action="#" method="post">
+      <h1>Contact Us</h1>
+        <br>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+        <br>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <br>
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+        <br>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+        <br>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </main>
+</body>
+</html>

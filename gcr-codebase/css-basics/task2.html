@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Favorite Destination - Jaipur</title>
+<link rel="stylesheet" href="q2.css">
+<style>
+  * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background-color: #fdf6ec;
+}
+
+header {
+  background-color: #7a1f3d;
+  color: #fff;
+  padding: 1.5em 2em;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #4a1128;
+  padding: 0.8em 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1.2em;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main section {
+  width: 100%;
+  padding: 4em 10%;
+  margin: 0;
+  border-bottom: 4px solid #e0c097;
+  color: #ffffff;
+}
+
+main section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+main section h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.gradient-linear {
+  background: linear-gradient(135deg, #7a1f3d, #d17a4a);
+}
+
+.gradient-radial {
+  background: radial-gradient(circle at center, #3b6e5f, #1c2b26);
+}
+
+.plain-section {
+  background-color: #fff3e0;
+  color: #3b2f2f;
+}
+
+.parallax {
+  background-attachment: fixed;
+}
+
+footer {
+  background-color: #4a1128;
+  color: #fff;
+  text-align: center;
+  padding: 1.2em 0;
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Jaipur, The Pink City</h1>
+  </header>
+
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#food">Food</a>
+    <a href="#culture">Culture</a>
+    <a href="#travel">Travel Tips</a>
+  </nav>
+
+  <main>
+    <section id="overview" class="gradient-linear parallax">
+      <h2>Overview</h2>
+      <p>Jaipur is the capital of Rajasthan, famous for its rose-pink buildings,
+      grand forts, and rich royal history. It forms part of India's Golden Triangle.</p>
+    </section>
+
+    <section id="food" class="plain-section">
+      <h2>Local Food</h2>
+      <p>Don't miss the dal baati churma, pyaaz kachori, and the famous Rajasthani thali,
+      served in traditional havelis around the old city.</p>
+    </section>
+
+    <section id="culture" class="gradient-radial parallax">
+      <h2>Culture &amp; Festivals</h2>
+      <p>Jaipur comes alive during Teej and the Jaipur Literature Festival, with folk music,
+      puppet shows, and vibrant markets selling handicrafts and textiles.</p>
+    </section>
+
+    <section id="travel" class="plain-section">
+      <h3>Travel Tips</h3>
+      <p>Visit between October and March for pleasant weather, and set aside at least three
+      days to properly explore Amber Fort, Hawa Mahal, and the City Palace.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Travel Notes. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Newspaper Layout</title>
+<link rel="stylesheet" href="q9.css">
+<style> 
+    * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: #ece7dd;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #fffdf8;
+}
+
+.masthead {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  border-bottom: 3px double #333;
+  padding-bottom: 0.4em;
+  margin-bottom: 1em;
+  column-span: all;
+}
+
+.columns {
+  column-count: 3;
+  column-gap: 2em;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.columns p {
+  margin: 0 0 1em;
+}
+
+.float-img {
+  float: left;
+  width: 220px;
+  margin: 0 1em 0.5em 0;
+  border-radius: 4px;
+}
+
+@media (max-width: 700px) {
+  .columns {
+    column-count: 1;
+  }
+  .float-img {
+    float: none;
+    display: block;
+    margin: 0 auto 1em;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="masthead">The Daily Column</h1>
+
+    <div class="columns">
+      <img class="float-img" src="https://picsum.photos/id/1074/220/160" alt="Illustration for the lead story">
+      <p>In a world where headlines change by the minute, the value of a well-written
+      column has not diminished. Readers still crave a steady voice that can make sense
+      of the noise around them, and that voice is often found in the humble newspaper
+      column, tucked between advertisements and weather reports.</p>
+
+      <p>Column writing rewards brevity and clarity. Unlike long-form journalism, a column
+      must earn the reader's attention within the first few lines, often opening with a
+      striking observation or a small personal anecdote before widening into a broader
+      argument about the state of things.</p>
+
+      <p>Layout matters just as much as content. The classic multi-column print format,
+      recreated here using CSS columns, forces text into a rhythm that is easy on the eye,
+      guiding readers naturally from one line to the next without the fatigue of overly
+      long lines of text stretched edge to edge.</p>
+
+      <p>Even in a digital-first world, many online publications borrow this print
+      aesthetic for long reads, proving that good typography and thoughtful spacing never
+      really go out of style, regardless of the medium carrying the words.</p>
+    </div>
+  </div>
+</body>
+</html>

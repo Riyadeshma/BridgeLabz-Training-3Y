@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Photo Gallery</title>
+<link rel="stylesheet" href="q6.css">
+<style>
+  * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+.page-title {
+  text-align: center;
+  margin: 2em 0;
+  color: #1f2937;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  padding: 2em;
+}
+
+.gallery-item {
+  flex: 1 1 calc(33.333% - 1.5em);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+}
+
+.gallery-item figcaption {
+  text-align: center;
+  margin-top: 0.5em;
+}
+</style>
+</head>
+<body>
+  <h1 class="page-title">Photo Gallery</h1>
+
+  <section class="gallery">
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1015/400/300" alt="Mountain river landscape">
+      <figcaption>Mountain River</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1025/400/300" alt="Dog looking at camera">
+      <figcaption>Curious Dog</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1035/400/300" alt="Forest path">
+      <figcaption>Forest Path</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1045/400/300" alt="Lake view">
+      <figcaption>Lake View</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1055/400/300" alt="City street">
+      <figcaption>City Street</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://picsum.photos/id/1065/400/300" alt="Desert dunes">
+      <figcaption>Desert Dunes</figcaption>
+    </figure>
+  </section>
+</body>
+</html>
