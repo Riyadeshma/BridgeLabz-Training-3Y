@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced CSS Selectors</title>
+  <link rel="stylesheet" href="task5.css">
+</head>
+<body>
+
+  <header>
+    <h1>Advanced CSS Selectors Showcase</h1>
+  </header>
+
+  <main>
+    <section class="demo-section">
+      <h2>Attribute Selectors</h2>
+      <form>
+        <input type="text" placeholder="Styled via type text">
+        <br><br>
+        <input type="email" placeholder="Not targeted">
+      </form>
+      <p>
+        Secure link: <a href="https://example.com">https://example.com</a><br>
+        Plain link: <a href="ftp://example.com">ftp://example.com</a>
+      </p>
+    </section>
+
+    <section class="demo-section">
+      <h2>Pseudo-classes</h2>
+      <ul class="item-list">
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+        <li>Item Four</li>
+        <li>Item Five</li>
+      </ul>
+      <input type="text" placeholder="Focus me">
+    </section>
+
+    <section class="demo-section">
+      <h2>Pseudo-elements</h2>
+      <p class="quote">This paragraph has generated content added before and after it.</p>
+    </section>
+
+    <section class="demo-section parent-block">
+      <h2>Combinators</h2>
+      <div class="combo-group">
+        <p>Direct child of combo-group</p>
+        <span>Adjacent sibling span</span>
+        <span>General sibling span</span>
+        <div>
+          <p>Descendant paragraph, nested deeper</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</body>
+</html>

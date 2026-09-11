@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+header, footer {
+  background-color: #1e293b;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.contact-form {
+  background-color: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input, textarea {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: 3px solid transparent;
+  transition: outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-solid {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.field-dashed {
+  outline-style: dashed;
+  outline-color: transparent;
+  outline-offset: 4px;
+}
+
+.field-dotted {
+  outline-style: dotted;
+  outline-color: transparent;
+  outline-offset: 2px;
+}
+
+.field-solid:focus {
+  outline-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.field-dashed:focus {
+  outline-color: #059669;
+  border-color: #059669;
+}
+
+.field-dotted:focus {
+  outline-color: #d97706;
+  border-color: #d97706;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 12px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+button:focus {
+  outline: 3px solid #f97316;
+  outline-offset: 3px;
+}

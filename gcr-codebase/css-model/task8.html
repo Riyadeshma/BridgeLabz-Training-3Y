@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box Model Exploration</title>
+  <link rel="stylesheet" href="task8.css">
+</head>
+<body>
+
+  <header>
+    <h1>Box Model Exploration</h1>
+  </header>
+
+  <main class="demo-area">
+    <div class="model-wrapper">
+      <h2>Default (content-box)</h2>
+      <div class="margin-layer">
+        <span class="layer-label">margin</span>
+        <div class="border-layer">
+          <span class="layer-label">border</span>
+          <div class="padding-layer">
+            <span class="layer-label">padding</span>
+            <div class="content-layer content-box-demo">content</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="model-wrapper">
+      <h2>box-sizing: border-box</h2>
+      <div class="margin-layer">
+        <span class="layer-label">margin</span>
+        <div class="border-layer">
+          <span class="layer-label">border</span>
+          <div class="padding-layer">
+            <span class="layer-label">padding</span>
+            <div class="content-layer border-box-demo">content</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="explanation">
+    <h3>What each layer means</h3>
+    <ul>
+      <li><strong>Content:</strong> the actual text or elements inside the box.</li>
+      <li><strong>Padding:</strong> transparent space between the content and the border.</li>
+      <li><strong>Border:</strong> the visible line surrounding the padding.</li>
+      <li><strong>Margin:</strong> transparent space outside the border.</li>
+    </ul>
+    <p>With content-box (the default), width/height apply only to the content, so padding and border add extra size. With border-box, the width/height already include padding and border.</p>
+  </section>
+
+ 
+
+</body>
+</html>
