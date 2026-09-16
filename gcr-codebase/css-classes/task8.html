@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box-Sizing Comparison</title>
+  <link rel="stylesheet" href="task8.css">
+</head>
+<body>
+  <header>
+    <h1>Box-Sizing Comparison</h1>
+  </header>
+
+  <main class="compare-container">
+    <section class="box-block">
+      <div class="box content-box"></div>
+      <p><strong>content-box (default):</strong> width and padding are added separately, making the total rendered size larger than the set width.</p>
+    </section>
+
+    <section class="box-block">
+      <div class="box border-box"></div>
+      <p><strong>border-box:</strong> padding and border are included within the set width, keeping the total size fixed.</p>
+    </section>
+  </main>
+</body>
+</html>

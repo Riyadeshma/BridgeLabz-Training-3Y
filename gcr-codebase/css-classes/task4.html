@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Selectors Practice</title>
+  <link rel="stylesheet" href="task4.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Selectors Practice Page</h1>
+  </header>
+
+  <main>
+    <section id="main-section">
+      <p>This paragraph is targeted using an <strong>element selector</strong>.</p>
+
+      <p class="highlight">This paragraph uses a <strong>class selector</strong>.</p>
+
+      <p id="unique-para">This paragraph uses an <strong>ID selector</strong>.</p>
+
+      <a href="#" target="_blank">This link is targeted using an <strong>attribute selector</strong>.</a>
+
+      <div class="parent">
+        <p>Direct child paragraph (<strong>&gt; combinator</strong>).</p>
+        <div class="wrapper">
+          <p>Descendant paragraph (<strong>descendant combinator</strong>).</p>
+        </div>
+      </div>
+
+      <h3>Adjacent Sibling Example</h3>
+      <p>This paragraph immediately follows the heading (<strong>+ combinator</strong>).</p>
+
+      <h3>General Sibling Example</h3>
+      <p>First sibling paragraph.</p>
+      <p>Second sibling paragraph (<strong>~ combinator</strong>).</p>
+
+      <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+        <li>List item three</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
