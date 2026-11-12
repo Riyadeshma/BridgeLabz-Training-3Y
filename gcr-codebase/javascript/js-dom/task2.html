@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 16px; }
+    textarea { width: 100%; height: 120px; padding: 8px; font-size: 16px; box-sizing: border-box; }
+    #counter { margin: 8px 0 16px; font-weight: bold; color: green; }
+    #counter.warning { color: #d4a000; }   /* yellow at 20 or fewer left */
+    #counter.danger { color: red; }        /* red at 0 */
+    button { padding: 8px 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Live Character Counter</h2>
+  <textarea id="textArea" placeholder="Type something..."></textarea>
+  <div id="counter">100 characters remaining</div>
+  <button id="resetButton">Reset</button>
+
+  <script>
+    const MAX_CHARS = 100;
+    const WARNING_LIMIT = 20;
+
+    const textArea = document.getElementById("textArea");
+    const counter = document.getElementById("counter");
+    const resetButton = document.getElementById("resetButton");
+
+    // Updates the counter text and its colour class
+    function updateCounter() {
+      const remaining = MAX_CHARS - textArea.value.length;
+      counter.textContent = remaining + " characters remaining";
+
+      counter.classList.toggle("danger", remaining === 0);
+      counter.classList.toggle("warning", remaining > 0 && remaining <= WARNING_LIMIT);
+    }
+
+    // Block typing once the limit is reached
+    textArea.addEventListener("keydown", (event) => {
+      const isTypingKey = event.key.length === 1 || event.key === "Enter";
+      const isShortcut = event.ctrlKey || event.metaKey;           // Ctrl+A, Ctrl+C, etc.
+      const hasSelection = textArea.selectionStart !== textArea.selectionEnd;
+
+      // Backspace, Delete and arrow keys are not typing keys, so they still work
+      if (textArea.value.length >= MAX_CHARS && isTypingKey && !isShortcut && !hasSelection) {
+        event.preventDefault();
+      }
+    });
+
+    // Handles pasted text: trims anything above the limit
+    textArea.addEventListener("input", () => {
+      if (textArea.value.length > MAX_CHARS) {
+        textArea.value = textArea.value.slice(0, MAX_CHARS);
+      }
+      updateCounter();
+    });
+
+    resetButton.addEventListener("click", () => {
+      textArea.value = "";
+      updateCounter();
+      textArea.focus();
+    });
+  </script>
+</body>
+</html>

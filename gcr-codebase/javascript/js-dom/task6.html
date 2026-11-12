@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Table Filter</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+    #searchBox { width: 100%; padding: 8px; font-size: 16px; box-sizing: border-box; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #2d89ef; color: #fff; }
+    #noResults { display: none; text-align: center; color: red; font-weight: bold; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Student Records</h2>
+  <input type="text" id="searchBox" placeholder="Search by name, branch or CGPA...">
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Branch</th><th>CGPA</th></tr>
+    </thead>
+    <tbody id="studentTableBody">
+      <tr><td>Aarav Sharma</td><td>CSE</td><td>8.7</td></tr>
+      <tr><td>Priya Verma</td><td>ECE</td><td>9.1</td></tr>
+      <tr><td>Rohan Gupta</td><td>Mechanical</td><td>7.8</td></tr>
+      <tr><td>Sneha Singh</td><td>CSE</td><td>9.4</td></tr>
+      <tr><td>Kabir Mehta</td><td>Civil</td><td>8.2</td></tr>
+      <tr><td>Ananya Rao</td><td>IT</td><td>8.9</td></tr>
+      <tr><td>Vikram Yadav</td><td>ECE</td><td>7.5</td></tr>
+    </tbody>
+  </table>
+
+  <p id="noResults">No results found</p>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const tableRows = document.querySelectorAll("#studentTableBody tr");
+    const noResultsMessage = document.getElementById("noResults");
+
+    // The "input" event fires on every keystroke, paste, or delete
+    searchBox.addEventListener("input", () => {
+      const searchText = searchBox.value.trim().toLowerCase();   // case-insensitive
+      let visibleRowCount = 0;
+
+      tableRows.forEach((row) => {
+        // row.textContent contains Name + Branch + CGPA together
+        const isMatch = row.textContent.toLowerCase().includes(searchText);
+        row.style.display = isMatch ? "" : "none";
+        if (isMatch) visibleRowCount++;
+      });
+
+      noResultsMessage.style.display = visibleRowCount === 0 ? "block" : "none";
+    });
+  </script>
+</body>
+</html>

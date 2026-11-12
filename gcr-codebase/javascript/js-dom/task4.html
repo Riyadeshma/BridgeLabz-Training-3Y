@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; transition: background 0.3s, color 0.3s; }
+    .theme-light { background: #ffffff; color: #222222; }
+    .theme-dark  { background: #1e1e1e; color: #f1f1f1; }
+    .theme-blue  { background: #d6e8ff; color: #0b2a5b; }
+    button { padding: 8px 18px; margin-right: 8px; cursor: pointer; border: 1px solid #888; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h2>Theme Switcher</h2>
+  <p>Current theme: <strong id="currentThemeLabel"></strong></p>
+
+  <button data-choose="light">Light</button>
+  <button data-choose="dark">Dark</button>
+  <button data-choose="blue">Blue</button>
+
+  <script>
+    const themeButtons = document.querySelectorAll("button[data-choose]");
+    const currentThemeLabel = document.getElementById("currentThemeLabel");
+
+    // Applies a theme using setAttribute() only
+    function applyTheme(themeName) {
+      // 1. The class decides the look (CSS: .theme-dark, .theme-blue, ...)
+      document.body.setAttribute("class", "theme-" + themeName);
+
+      // 2. The custom attribute stores the current theme: data-theme="dark"
+      document.body.setAttribute("data-theme", themeName);
+
+      currentThemeLabel.textContent = document.body.getAttribute("data-theme");
+
+      // Remember the choice across page reloads
+      try { localStorage.setItem("savedTheme", themeName); } catch (error) { /* ignore */ }
+    }
+
+    themeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyTheme(button.getAttribute("data-choose"));
+      });
+    });
+
+    // On load, use the saved theme or fall back to light
+    let savedTheme = "light";
+    try { savedTheme = localStorage.getItem("savedTheme") || "light"; } catch (error) { /* ignore */ }
+    applyTheme(savedTheme);
+  </script>
+</body>
+</html>
