@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; padding: 0 16px; }
+    .field { margin-bottom: 14px; }
+    label { display: block; font-weight: bold; margin-bottom: 4px; }
+    input { width: 100%; padding: 8px; font-size: 16px; box-sizing: border-box; }
+    input.invalid { border: 2px solid red; }
+    .error { color: red; font-size: 14px; min-height: 18px; margin-top: 4px; }
+    button { padding: 10px 20px; cursor: pointer; background: #2d89ef; color: #fff; border: none; border-radius: 4px; }
+    #successMessage { display: none; margin-top: 16px; padding: 10px; background: #d4f8d4; color: #1b6e1b; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h2>Sign Up</h2>
+
+  <!-- novalidate turns off the browser's own popups so our custom errors are used -->
+  <form id="signupForm" novalidate>
+    <div class="field">
+      <label for="nameInput">Name</label>
+      <input type="text" id="nameInput" name="name">
+      <div class="error" id="nameError"></div>
+    </div>
+
+    <div class="field">
+      <label for="emailInput">Email</label>
+      <input type="text" id="emailInput" name="email">
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <div class="field">
+      <label for="passwordInput">Password</label>
+      <input type="password" id="passwordInput" name="password">
+      <div class="error" id="passwordError"></div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="successMessage">Form Submitted Successfully</div>
+
+  <script>
+    const signupForm = document.getElementById("signupForm");
+    const successMessage = document.getElementById("successMessage");
+
+    // Each field: its input, its error box, and a rule that returns an error message ("" = valid)
+    const fields = [
+      {
+        input: document.getElementById("nameInput"),
+        errorBox: document.getElementById("nameError"),
+        validate: (value) => (value.trim() === "" ? "Name is required." : "")
+      },
+      {
+        input: document.getElementById("emailInput"),
+        errorBox: document.getElementById("emailError"),
+        validate: (value) => {
+          if (value.trim() === "") return "Email is required.";
+          if (!value.includes("@")) return "Email must contain @.";
+          return "";
+        }
+      },
+      {
+        input: document.getElementById("passwordInput"),
+        errorBox: document.getElementById("passwordError"),
+        validate: (value) => (value.length < 6 ? "Password must be at least 6 characters." : "")
+      }
+    ];
+
+    // Validates one field, shows or clears its error, returns true if valid
+    function validateField(field) {
+      const errorMessage = field.validate(field.input.value);
+      field.errorBox.textContent = errorMessage;
+      field.input.classList.toggle("invalid", errorMessage !== "");
+      return errorMessage === "";
+    }
+
+    signupForm.addEventListener("submit", (event) => {
+      event.preventDefault();   // always stop the real form submission / page reload
+      successMessage.style.display = "none";
+
+      // Validate every field (map runs all of them so every error shows at once)
+      const results = fields.map(validateField);
+      const isFormValid = results.every((isValid) => isValid);
+
+      if (isFormValid) {
+        successMessage.style.display = "block";
+        signupForm.reset();
+      }
+    });
+
+    // Live feedback: when the user fixes a field that is showing an error,
+    // the error disappears automatically as soon as the value becomes valid.
+    fields.forEach((field) => {
+      field.input.addEventListener("input", () => {
+        successMessage.style.display = "none";
+        if (field.errorBox.textContent !== "") {
+          validateField(field);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- q5.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Ticket Booking</title>
+  <style>
+    body { font-family: Arial; max-width: 400px; margin: 30px auto; }
+    input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    .error { color: red; font-size: 12px; min-height: 16px; }
+    #ticket { border: 2px dashed #333; padding: 12px; margin-top: 16px; display: none; }
+    button { margin-top: 10px; padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <h2>Book Your Ticket</h2>
+  <form id="bookingForm" novalidate>
+    <label>Name</label>
+    <input type="text" id="name"><div class="error" id="nameError"></div>
+    <label>Email</label>
+    <input type="text" id="email"><div class="error" id="emailError"></div>
+    <label>Seats (1-10)</label>
+    <input type="text" id="seats"><div class="error" id="seatsError"></div>
+    <button type="submit">Book</button>
+  </form>
+  <div id="ticket"></div>
+  <script src="q5.js"></script>
+</body>
+</html>

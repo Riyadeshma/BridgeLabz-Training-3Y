@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 16px; }
+    .add-row { display: flex; gap: 8px; margin-bottom: 16px; }
+    .add-row input { flex: 1; padding: 8px; }
+    button { padding: 6px 12px; cursor: pointer; border: none; border-radius: 4px; }
+    #addButton { background: #2d89ef; color: #fff; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; gap: 8px; padding: 8px; border-bottom: 1px solid #ddd; }
+    .product-name, .edit-input { flex: 1; }
+    .edit-input { padding: 4px; font-size: 14px; }
+    .edit-btn { background: #f1c40f; }
+    .delete-btn { background: #e74c3c; color: #fff; }
+  </style>
+</head>
+<body>
+  <h2>Product List Manager</h2>
+
+  <div class="add-row">
+    <input type="text" id="productInput" placeholder="Enter product name">
+    <button id="addButton">Add</button>
+  </div>
+
+  <ul id="productList"></ul>
+
+  <script>
+    const productInput = document.getElementById("productInput");
+    const addButton = document.getElementById("addButton");
+    const productList = document.getElementById("productList");
+
+    // Keeps track of which <li> is currently in edit mode (only one at a time)
+    let editingItem = null;
+
+    // Builds one list item with a name and Edit / Delete buttons
+    function createProductItem(name) {
+      const listItem = document.createElement("li");
+
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "product-name";
+      nameSpan.textContent = name;
+
+      const editButton = document.createElement("button");
+      editButton.className = "edit-btn";
+      editButton.textContent = "Edit";
+
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "delete-btn";
+      deleteButton.textContent = "Delete";
+
+      listItem.append(nameSpan, editButton, deleteButton);
+      return listItem;
+    }
+
+    function addProduct() {
+      const productName = productInput.value.trim();
+      if (productName === "") {
+        productInput.focus();
+        return;
+      }
+      productList.appendChild(createProductItem(productName));
+      productInput.value = "";
+      productInput.focus();
+    }
+
+    // Switches an item into inline edit mode: the text becomes an input box
+    function startEdit(listItem) {
+      // If another item is being edited, save it first
+      if (editingItem && editingItem !== listItem) {
+        saveEdit(editingItem);
+      }
+
+      const nameSpan = listItem.querySelector(".product-name");
+      const editInput = document.createElement("input");
+      editInput.type = "text";
+      editInput.className = "edit-input";
+      editInput.value = nameSpan.textContent;
+      editInput.dataset.oldValue = nameSpan.textContent;   // fallback if left empty
+
+      listItem.replaceChild(editInput, nameSpan);
+      listItem.querySelector(".edit-btn").textContent = "Save";
+      editInput.focus();
+      editingItem = listItem;
+    }
+
+    // Saves the edited text and switches back to normal view
+    function saveEdit(listItem) {
+      const editInput = listItem.querySelector(".edit-input");
+      if (!editInput) return;
+
+      const newName = editInput.value.trim() || editInput.dataset.oldValue;
+
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "product-name";
+      nameSpan.textContent = newName;
+
+      listItem.replaceChild(nameSpan, editInput);
+      listItem.querySelector(".edit-btn").textContent = "Edit";
+
+      if (editingItem === listItem) editingItem = null;
+    }
+
+    addButton.addEventListener("click", addProduct);
+    productInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") addProduct();
+    });
+
+    // EVENT DELEGATION: one listener on the parent <ul> handles all buttons,
+    // including items that are added later.
+    productList.addEventListener("click", (event) => {
+      const listItem = event.target.closest("li");
+      if (!listItem) return;
+
+      if (event.target.classList.contains("delete-btn")) {
+        if (editingItem === listItem) editingItem = null;
+        listItem.remove();
+      } else if (event.target.classList.contains("edit-btn")) {
+        if (editingItem === listItem) {
+          saveEdit(listItem);     // button says "Save"
+        } else {
+          startEdit(listItem);
+        }
+      }
+    });
+
+    // Pressing Enter inside the edit box also saves
+    productList.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && event.target.classList.contains("edit-input")) {
+        saveEdit(event.target.closest("li"));
+      }
+    });
+
+    // AUTO-SAVE: a click anywhere outside the item being edited saves it
+    document.addEventListener("click", (event) => {
+      if (editingItem && !editingItem.contains(event.target)) {
+        saveEdit(editingItem);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+    #dropdown { position: relative; display: inline-block; width: 220px; }
+    #dropdownButton { width: 100%; padding: 10px; text-align: left; cursor: pointer;
+                      background: #fff; border: 1px solid #888; border-radius: 4px; font-size: 16px; }
+    #dropdownMenu { display: none; position: absolute; top: 100%; left: 0; right: 0;
+                    background: #fff; border: 1px solid #888; border-top: none;
+                    list-style: none; margin: 0; padding: 0; z-index: 5; }
+    #dropdownMenu.open { display: block; }
+    #dropdownMenu li { padding: 10px; cursor: pointer; }
+    #dropdownMenu li:hover { background: #e8f0fe; }
+  </style>
+</head>
+<body>
+  <h2>Custom Dropdown</h2>
+
+  <div id="dropdown">
+    <button id="dropdownButton">Select a language ▾</button>
+    <ul id="dropdownMenu">
+      <li data-value="JavaScript">JavaScript</li>
+      <li data-value="Python">Python</li>
+      <li data-value="Java">Java</li>
+      <li data-value="C++">C++</li>
+    </ul>
+  </div>
+
+  <script>
+    const dropdown = document.getElementById("dropdown");
+    const dropdownButton = document.getElementById("dropdownButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    // Button shows / hides the options
+    dropdownButton.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("open");
+    });
+
+    // Clicking an option updates the button text (event delegation on the <ul>)
+    dropdownMenu.addEventListener("click", (event) => {
+      if (event.target.tagName === "LI") {
+        dropdownButton.textContent = event.target.dataset.value + " ▾";
+        dropdownMenu.classList.remove("open");
+      }
+    });
+
+    // Clicking outside closes the dropdown.
+    // The third argument "true" registers the listener in the CAPTURING phase,
+    // so it runs on the way DOWN to the target, before any bubbling handlers,
+    // and still works even if some other handler calls stopPropagation().
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdownMenu.classList.remove("open");
+      }
+    }, true);
+  </script>
+</body>
+</html>
